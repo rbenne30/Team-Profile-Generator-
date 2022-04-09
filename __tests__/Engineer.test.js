@@ -9,18 +9,21 @@ test('can getName', () => {
 test('can getId', () => {
   const name = "tom";
   const id = 6;
-  const e = new Engineer (name.id)
+  const e = new Engineer (name,id)
   expect(e.id).toBe(id);
 });
 test('can getEmail', () => {
   const name = "tom";
+  const id = 6;
   const email = "checkthis@yahoo.com";
-  const e = new Engineer (name.id,email)
+  const e = new Engineer (name,id,email)
   expect(e.email).toBe(email);
 });
 test('can github', () => {
     const name = "tom";
+    const id = 6;
+    const email = "checkthis@yahoo.com";
     const github = "tom30!";
-    const e = new Engineer (name.id,email,github)
+    const e = new Engineer (name,id,email,github)
     expect(e.github).toBe(github);
   });

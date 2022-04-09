@@ -1,21 +1,28 @@
-test('creates a manager object', () => {
-    const manager = new Manager('Tom');
-  
-    expect(manager.name).toBe('Tom');
-    expect(manager.employeeID).toEqual(expect.any(Number));
-    expect(manager.email).toBe('tom1@yahoo.com');
-    expect(manager.officenumber).toEqual(expect.any(Number));
-  });
+const Manager = require("../lib/Manager");
 
-// function Potion(name) {
-//     this.types = ['strength', 'agility', 'health'];
-//     this.name = name || this.types[Math.floor(Math.random() * this.types.length)];
-  
-//     if (this.name === 'health') {
-//       this.value = Math.floor(Math.random() * 10 + 30);
-//     } else {
-//       this.value = Math.floor(Math.random() * 5 + 7);
-//     }
-//   }
-  
-//   module.exports = Potion;
+test('can getName', () => {
+  const name = "tom";
+  const e = new Manager (name)
+  expect(e.name).toBe(name);
+});
+test('can getId', () => {
+  const name = "tom";
+  const id = 6;
+  const e = new Manager (name,id)
+  expect(e.id).toBe(id);
+});
+test('can getEmail', () => {
+  const name = "tom";
+  const id = 6;
+  const email = "checkthis@yahoo.com";
+  const e = new Manager (name,id,email)
+  expect(e.email).toBe(email);
+});
+test('can getOfficenumber', () => {
+    const name = "tom";
+    const id = 6;
+    const email = "checkthis@yahoo.com";
+    const officeNumber = 34;
+    const e = new Manager (name,id,email,officeNumber)
+    expect(e.officeNumber).toBe(officeNumber);
+  });

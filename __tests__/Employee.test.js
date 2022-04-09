@@ -8,12 +8,13 @@ test('can getName', () => {
 test('can getId', () => {
   const name = "tom";
   const id = 6;
-  const e = new Employee (name.id)
+  const e = new Employee (name,id)
   expect(e.id).toBe(id);
 });
 test('can getEmail', () => {
   const name = "tom";
+  const id = 6;
   const email = "checkthis@yahoo.com";
-  const e = new Employee (name.id,email)
+  const e = new Employee (name,id,email)
   expect(e.email).toBe(email);
 });

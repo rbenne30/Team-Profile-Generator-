@@ -1,32 +1,32 @@
 const generateTeam = (team) => {
-
+    console.log(team);
     // generates manager cards for html
     const generateManager = (manager) => {
         return `
-        <div>${manager.getName}</div>
+        <div>${manager.getName()}</div>
     
-        <div>${manager.getId}</div>;
-        <div>${manger.getEmail}</div>;
-        <div>${manger.getOfficenumber}</div>`;
+        <div>${manager.getId()}</div>;
+        <div>${manager.getEmail()}</div>;
+        <div>${manager.getOfficenumber()}</div>`;
     }
 
 
     // generates intern cards for html. Create generateIntern fucntion like above
     const generateIntern = (intern) => {
         return `
-        <div>${intern.getName}</div>
-        <div>${intern.getId}</div>;
-        <div>${intern.getEmail}</div>;
-        <div>${intern.getSchool}</div>`;
+        <div>${intern.getName()}</div>
+        <div>${intern.getId()}</div>;
+        <div>${intern.getEmail()}</div>;
+        <div>${intern.getSchool()}</div>`;
     }
 
     // generates engineer cards for html, Create like above
-    const generteEngineer = (engineer) => {
+    const generateEngineer = (engineer) => {
         return `
-        <div>${engineer.getName}</div>
-        <div>${engineer.gerId}</div>;
-        <div>${engineer.getEmail}</div>;
-        <div>${engineer.getGithub}</div>`
+        <div>${engineer.getName()}</div>
+        <div>${engineer.getId()}</div>;
+        <div>${engineer.getEmail()}</div>;
+        <div>${engineer.getGithub()}</div>`
     }
 
     let html = [];
@@ -40,8 +40,9 @@ const generateTeam = (team) => {
         .map(intern => generateIntern(intern)))
 
     //create filter for engineer
-    html/push(team.filter(employee => employee.getRole() === "Engineer")
+    html.push(team.filter(employee => employee.getRole() === "Engineer")
         .map(engineer => generateEngineer(engineer)))
-
-    return html;
+    console.log(html);
+    return `${html}`;
 }
+module.exports = { generateTeam }

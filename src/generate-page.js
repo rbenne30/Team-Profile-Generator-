@@ -7,7 +7,7 @@ const generateTeam = (team) => {
     
         <div>${manager.getId()}</div>;
         <div>${manager.getEmail()}</div>;
-        <div>${manager.getOfficenumber()}</div>`;
+        <div>${manager.getOfficeNumber()}</div>`;
     }
 
 
@@ -43,6 +43,6 @@ const generateTeam = (team) => {
     html.push(team.filter(employee => employee.getRole() === "Engineer")
         .map(engineer => generateEngineer(engineer)))
     console.log(html);
-    return `${html}`;
+    return `${html}`;//add the actual html format in front of this back tick at the end 
 }
 module.exports = { generateTeam }

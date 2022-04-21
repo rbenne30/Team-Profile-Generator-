@@ -1,21 +1,61 @@
 const inquirer = require("inquirer");
 const Engineer = require("./lib/Engineer");
-const Manager = require("./lib/Manager")
+const Manager = require("./lib/Manager");
+const Intern = require("./lib/Intern");
+const fs = require("fs");
 // double check this
-const generateTeam = require('./src/generate-page');
+const { generateTeam } = require('./src/generate-page');
 
 let teamArray = [];
 
 // TODO: Create a function to initialize app
-function init() {
-  inquirer.prompt(questions).then(answers => {
-      console.log("generating index.html")
-      writeToFile("index.html", generateTeam({...answers}))
+function build() {
+
+  console.log("generating index.html")
+  fs.writeFileSync("dist/index.html", generateTeam(teamArray ))
+
+}
+//creating the function
+const start = () => {
+  managerInq();
+}
+
+
+const promptUser = () => {
+  inquirer.prompt([
+    {
+      type: "list",
+      name: "userChoice",
+      message: "would you like to add another member?",
+      choices: [
+        "engineer",
+        "intern",
+        "done"
+      ]
+    }
+  ]).then(answers => {
+    console.log(answers)
+    switch (answers.userChoice) {
+      case "engineer":
+        engineerInq();
+        break;
+      case "intern":
+        internInq();
+        break;
+      default:
+        build();
+
+    }
   })
 }
 
+ 
+
+
+
+
 const managerInq = () => {
-  console.log ("please build your team starting with the manager")
+  console.log("please build your team starting with the manager")
   inquirer.prompt([
     {
       type: "input",
@@ -38,11 +78,12 @@ const managerInq = () => {
       message: "what is the manager's officenumber?"
     }
 
-  ]).then((managerAnswers)=>{
+  ]).then((managerAnswers) => {
     console.log("All the answers", managerAnswers);
-    const manager  = new Manager(managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.managerOfficeNumber);
+    const manager = new Manager(managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.managerOfficeNumber);
     console.log(manager);
     teamArray.push(manager);
+    promptUser();
   })
 }
 
@@ -67,15 +108,16 @@ const engineerInq = () => {
     },
     {
       type: "input",
-      name: "engineerSchool",
+      name: "engineerGitHub",
       message: "what is the engineer's Github username?"
-    },  
+    },
   ]).then((engineerAnswers) => {
     console.log("All the answers", engineerAnswers);
-    const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerid, engineerAnswers.engineerEmail, engineerAnswers.engineerGithub);
+    const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerId, engineerAnswers.engineerEmail, engineerAnswers.engineerGithub);
     console.log(engineer);
     teamArray.push(engineer);
-  })  
+    promptUser();
+  })
 }
 const internInq = () => {
   console.log("Next add an Intern to your team")
@@ -99,15 +141,19 @@ const internInq = () => {
       type: "input",
       name: "internSchool",
       message: "what school does the intern attend?"
-    },  
+    },
   ]).then((internAnswers) => {
     console.log("All the answers", internAnswers);
     const intern = new Intern(internAnswers.internName, internAnswers.internId, internAnswers.internEmail, internAnswers.internSchool);
     console.log(intern);
     teamArray.push(intern);
-  })  
+    promptUser();
+  })
 }
 
- managerInq()
+//managerInq()
 //engineerInq()
 //internInq()
+
+//calling the function
+start();

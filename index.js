@@ -108,12 +108,12 @@ const engineerInq = () => {
     },
     {
       type: "input",
-      name: "engineerSchool",
+      name: "engineerGitHub",
       message: "what is the engineer's Github username?"
     },
   ]).then((engineerAnswers) => {
     console.log("All the answers", engineerAnswers);
-    const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerid, engineerAnswers.engineerEmail, engineerAnswers.engineerGithub);
+    const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerId, engineerAnswers.engineerEmail, engineerAnswers.engineerGithub);
     console.log(engineer);
     teamArray.push(engineer);
     promptUser();

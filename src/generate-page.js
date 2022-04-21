@@ -43,6 +43,16 @@ const generateTeam = (team) => {
     html.push(team.filter(employee => employee.getRole() === "Engineer")
         .map(engineer => generateEngineer(engineer)))
     console.log(html);
-    return `${html}`;//add the actual html format in front of this back tick at the end 
+    return `${html} <!DOCTYPE html>
+    <html lang=“en”>
+    <head>
+        <meta charset=“UTF-8">
+        <meta http-equiv=“X-UA-Compatible” content=“IE=edge”>
+        <meta name=“viewport” content=“width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+    </body>
+    </html>`;//add the actual html format in front of this back tick at the end 
 }
 module.exports = { generateTeam }

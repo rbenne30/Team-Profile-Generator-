@@ -45,14 +45,22 @@ const generateTeam = (team) => {
     console.log(html);
     return `<!DOCTYPE html>
        <html lang="en">
-    <link rel="stylesheet" type="text/css" href="./style.css">
        <head>
            <meta charset="UTF-8">
            <meta http-equiv="X-UA-Compatible" content="IE=edge">
            <meta name="viewport" content="width=device-width, initial-scale=1.0">
            <title>TeamProfile Generator</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
        </head>
        <body>
+    <div class="Manager">
+    </div>
+    <div class= "Engineer"> 
+    </div>
+    <div class= "Intern">
+    </div>
+    <div> 
+    </div> 
        ${html} 
        </body>
        </html>`;//add the actual html format in front of this back tick at the end 

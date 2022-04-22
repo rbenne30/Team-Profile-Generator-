@@ -53,8 +53,14 @@ const generateTeam = (team) => {
     <link rel="stylesheet" type="text/css" href="./style.css">
        </head>
        <body>
-    <div class = "card-body">
-    <div clss
+    <div class="Manager">
+    </div>
+    <div class= "Engineer"> 
+    </div>
+    <div class = "Intern">
+    </div>
+    <div> 
+    </div> 
        ${html} 
        </body>
        </html>`;//add the actual html format in front of this back tick at the end 

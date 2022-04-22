@@ -57,7 +57,7 @@ const generateTeam = (team) => {
     </div>
     <div class= "Engineer"> 
     </div>
-    <div class = "Intern">
+    <div class= "Intern">
     </div>
     <div> 
     </div> 

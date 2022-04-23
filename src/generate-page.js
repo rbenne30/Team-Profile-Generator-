@@ -3,13 +3,12 @@ const generateTeam = (team) => {
     // generates manager cards for html
     const generateManager = (manager) => {
         return `
+        <div>${manager.getRole()}</div>
         <div>${manager.getName()}</div>
     
         <div>${manager.getId()}</div>;
         <div>${manager.getEmail()}</div>;
-        <div>${manager.getOfficeNumber()}</div>
-        
-        `;
+        <div>${manager.getOfficeNumber()}</div>`;
     }
 
     // generates intern cards for html. Create generateIntern fucntion like above
@@ -37,9 +36,9 @@ const generateTeam = (team) => {
 
     //filters the teamArray for all managers and creates employeeCards for them
     employeeCards.push(
-                team.filter(employee => employee.getRole() === "Manager")
-                    .map(manager => generateManager(manager))
-             )
+        team.filter(employee => employee.getRole() === "Manager")
+            .map(manager => generateManager(manager))
+    )
 
     // create filter for intern as well
     employeeCards.push(team.filter(employee => employee.getRole() === "Intern")
@@ -49,10 +48,6 @@ const generateTeam = (team) => {
     employeeCards.push(team.filter(employee => employee.getRole() === "Engineer")
         .map(engineer => generateEngineer(engineer)))
 
-
-    employeeCards.push("Hey, Im just another string element, but because Im a string, Im allowed to be another element!");
-
-    console.log(employeeCards);
     //include "my team" banner before the employee cards
     return `<!DOCTYPE html>
        <html lang="en">
@@ -64,9 +59,10 @@ const generateTeam = (team) => {
            <link rel="stylesheet" type="text/css" href="./style.css">
        </head>
        <body>
+    <header> "my team" </header>
 
-
-           ${employeeCards} 
+           ${employeeCards}
+        
        </body>
        </html>`;//add the actual html format in front of this back tick at the end 
 }

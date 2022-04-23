@@ -7,9 +7,10 @@ const generateTeam = (team) => {
     
         <div>${manager.getId()}</div>;
         <div>${manager.getEmail()}</div>;
-        <div>${manager.getOfficeNumber()}</div>`;
+        <div>${manager.getOfficeNumber()}</div>
+        
+        `;
     }
-
 
     // generates intern cards for html. Create generateIntern fucntion like above
     const generateIntern = (intern) => {
@@ -29,20 +30,30 @@ const generateTeam = (team) => {
         <div>${engineer.getGithub()}</div>`
     }
 
-    let html = [];
+    let employeeCards = [];
 
-    //filters the teamArray for all managers and creates html for them
-    html.push(team.filter(employee => employee.getRole() === "Manager")
-        .map(manager => generateManager(manager)))
+    //let filteredManagers = team.filter(employee => employee.getRole() === "Manager");
+    //let formatedManager = filteredManagers.map(generateManager(manager));
+
+    //filters the teamArray for all managers and creates employeeCards for them
+    employeeCards.push(
+                team.filter(employee => employee.getRole() === "Manager")
+                    .map(manager => generateManager(manager))
+             )
 
     // create filter for intern as well
-    html.push(team.filter(employee => employee.getRole() === "Intern")
+    employeeCards.push(team.filter(employee => employee.getRole() === "Intern")
         .map(intern => generateIntern(intern)))
 
     //create filter for engineer
-    html.push(team.filter(employee => employee.getRole() === "Engineer")
+    employeeCards.push(team.filter(employee => employee.getRole() === "Engineer")
         .map(engineer => generateEngineer(engineer)))
-    console.log(html);
+
+
+    employeeCards.push("Hey, Im just another string element, but because Im a string, Im allowed to be another element!");
+
+    console.log(employeeCards);
+    //include "my team" banner before the employee cards
     return `<!DOCTYPE html>
        <html lang="en">
        <head>
@@ -50,18 +61,12 @@ const generateTeam = (team) => {
            <meta http-equiv="X-UA-Compatible" content="IE=edge">
            <meta name="viewport" content="width=device-width, initial-scale=1.0">
            <title>TeamProfile Generator</title>
-    <link rel="stylesheet" type="text/css" href="./style.css">
+           <link rel="stylesheet" type="text/css" href="./style.css">
        </head>
        <body>
-    <div class="Manager">
-    </div>
-    <div class= "Engineer"> 
-    </div>
-    <div class= "Intern">
-    </div>
-    <div> 
-    </div> 
-       ${html} 
+
+
+           ${employeeCards} 
        </body>
        </html>`;//add the actual html format in front of this back tick at the end 
 }

@@ -3,30 +3,35 @@ const generateTeam = (team) => {
     // generates manager cards for html
     const generateManager = (manager) => {
         return `
-        <div>${manager.getRole()}</div>
-        <div>${manager.getName()}</div>
+        <div class = card>${manager.getRole()}
+        <h4>${manager.getName()}</h4>;
     
-        <div>${manager.getId()}</div>;
-        <div>${manager.getEmail()}</div>;
-        <div>${manager.getOfficeNumber()}</div>`;
+        <li class = "Id" >${manager.getId()}</li>;
+        <li class = "email">${manager.getEmail()}</li>;
+        <li class = "office number">${manager.getOfficeNumber()}</li>
+        </div>`;
     }
 
     // generates intern cards for html. Create generateIntern fucntion like above
     const generateIntern = (intern) => {
         return `
-        <div>${intern.getName()}</div>
-        <div>${intern.getId()}</div>;
-        <div>${intern.getEmail()}</div>;
-        <div>${intern.getSchool()}</div>`;
+        <div class = card>${intern.getRole()}
+        <h4>${intern.getName()}</h4>;
+        <li>${intern.getId()}</li>;
+        <li>${intern.getEmail()}</li>;
+        <li>${intern.getSchool()}</li>
+        </div>`;
     }
 
     // generates engineer cards for html, Create like above
     const generateEngineer = (engineer) => {
         return `
-        <div>${engineer.getName()}</div>
-        <div>${engineer.getId()}</div>;
-        <div>${engineer.getEmail()}</div>;
-        <div>${engineer.getGithub()}</div>`
+        <div class = card>${engineer.getRole()}
+        <h4>${engineer.getName()}</h4>
+        <li>${engineer.getId()}</li>;
+        <li>${engineer.getEmail()}</li>;
+        <li>${engineer.getGithub()}</li>
+        </div>`;
     }
 
     let employeeCards = [];
@@ -59,7 +64,7 @@ const generateTeam = (team) => {
            <link rel="stylesheet" type="text/css" href="./style.css">
        </head>
        <body>
-    <header> "my team" </header>
+    <header> "MY TEAM" </header>
 
            ${employeeCards}
         
